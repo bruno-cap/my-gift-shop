@@ -31,3 +31,22 @@ window.onclick = function(event) {
     modal2.style.display = "none";
     }
 }
+
+// show or hide hamburger menu
+
+let hamburgerMenu = document.querySelector("#hamburgerLink");
+let menuToShowOrHide = document.querySelector("#menu-to-show-or-hide");
+
+hamburgerMenu.addEventListener("click", ()=>{
+
+    if(menuToShowOrHide.style.display === 'block') {
+        menuToShowOrHide.style.display = 'none';
+    }
+    else {
+        menuToShowOrHide.style.display = 'block';
+    }
+});
+
+
+
+
