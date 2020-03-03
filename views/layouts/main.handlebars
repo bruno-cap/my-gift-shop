@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{headingInfo}}</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins|Quicksand|Sriracha&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div id="header-grid">
+            <div id="logo-area">
+                  <h1><a href="/">mygiftshop</h1></a>
+            </div>
+
+            <div class="search-container">
+                <form action="/" method="POST">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+            <div id="id-buttons">
+                <p><span id="myBtn">Login</span>
+                <span id="myBtn2">Sign Up</span></p>
+            </div>
+        </div>
+
+        <nav id="regular-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="#">Link #3</a></li>
+                <li><a href="#">Link #4</a></li>
+                <li><a href="#">Link #5</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer>
+        <div id="footer-grid-categories">
+
+            <div class="category-in-footer-grid">
+                <p>mygiftshop</p>
+                <p>1750 Finch Ave E</p>
+                <p>Toronto, ON M2J 2X5</p>
+                <p>416-123-4567</p>
+                <p><a href="mailto:info@mygiftshop.com">info@mygiftshop.com</a></p>
+            </div>
+
+            <div class="category-in-footer-grid">
+                <p>Hear all about us!</p>
+                <form action="#" method="POST">
+                    <input type="email" id="email-field" name="useremail" placeholder="Your e-mail">
+                    <input type="submit" id="subscribe-button" value="Subscribe">
+                </form>
+                <br>
+                <p>
+                    <a href="#"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp fa-2x"></i></a>
+                </p>
+            </div>
+
+        </div>
+        <br>
+        <div id="footer-grid-copyright">
+            <p>© 2020 by mygiftshop, Inc.
+                <a href="#top"><i class="far fa-arrow-alt-circle-up"></i></a>
+            </p>
+        </div>
+    </footer>
+
+  <!-- modals to be displayed when user clicks on login or sign up --->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      <h2>Login</h2>
+
+      <form action="#" method="POST">
+          <label for="userid"><p>E-mail address or mobile phone number</p></label>
+          <input type="text" id="userid" name="userid">
+          <label for="password"><p>Password</p></label>
+          <input type="text" id="password" name="password"><br>
+ 
+
+          <input type="submit" id="submitid" value="Continue">
+      </form>
+
+    </div>
+  </div>
+
+  <div id="myModal2" class="modal">
+
+    <div class="modal-content">
+      <span class="close2">&times;</span>
+      <h2>Sign Up</h2>
+
+      <form action="#" method="POST">
+          <label for="userid"><p>Your name</p></label>
+          <input type="text" id="userid" name="userid">
+          <label for="email"><p>E-mail</p></label>
+          <input type="text" id="email" name="email">
+          <label for="password"><p>Password</p></label>
+          <input type="text" id="password" name="password">
+          <label for="password2"><p>Please re-enter password</p></label>
+          <input type="text" id="password2" name="password2">
+
+          <input type="submit" id="submitid" value="Create mygiftshop account">
+      </form>
+
+    </div>
+  </div>
+
+  <script src="js-front/mainfrontend.js"></script>
+
+</body>
+
+</html>

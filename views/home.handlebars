@@ -1,0 +1,47 @@
+<section>
+    <div id="banner">
+        <img src="img/banner.jpg" alt="Picture of a couple">
+        <div id="text-container-inside-banner">
+                <h4>50% OFF</h4>
+                <h4>GIFTS</h4>
+                <h4>FOR A</h4>
+                <h4>SPECIAL</h4>
+                <h4>SOMEONE.</h4>
+        </div>
+    </div>
+</section>
+
+<section>
+    
+    <h2>product categories</h2>
+
+    <div class="section-caroussel">
+        {{#each categories}}
+            <div class="item-in-section-caroussel">
+                <a href="#"><h3>{{this.category}}</h3>
+                <img src="img/{{this.image}}" alt="{{this.category}}"></a>
+            </div>
+        {{/each}}
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2>bestsellers</h2>
+
+    <div class="section-caroussel">
+        {{#each bestSellers}}
+            <div class="item-in-section-caroussel">
+                <div>
+                    <a href="#"><img src="img/{{this.image}}" alt="{{this.title}}">
+                    <p>{{this.title}}</p>
+                    <p>{{this.category}}</p>
+                    <p>$ {{this.price}}</p></a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+</section>
