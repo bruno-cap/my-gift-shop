@@ -215,10 +215,10 @@ main h1
 
 .section-caroussel
 {
-    display: inline-grid;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 1000px;
-    margin-top: 20px;
+    margin: 0 auto;
 }
 
 .section:nth-of-type(3) a {
@@ -450,6 +450,7 @@ input[type="submit"]::placeholder {
 #products-grid > .section-caroussel {
     grid-template-columns: 1fr 1fr 1fr;
     margin-left: 35px;
+    width: 750px;
 }
 
 #products-menu hr
@@ -489,6 +490,16 @@ input[type="submit"]::placeholder {
         font-size: 50px;
         margin-bottom: 17px;
     }
+
+
+    /* --- products page --- */
+
+    #products-grid > .section-caroussel {
+        grid-template-columns: 1fr 1fr;
+        margin-left: 35px;
+        width: 500px;
+    }
+
 
 }
 
@@ -600,6 +611,20 @@ input[type="submit"]::placeholder {
         font-weight: bold;
     }
 
+    /* --- products page --- */
+
+    #products-menu {
+        display: none;
+    }
+
+    #products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #products-grid > .section-caroussel {
+        margin-left: 0;
+    }
+
 }
 
 /* --------------------------------- media query for cell phones --------------------------------- */
@@ -662,5 +687,14 @@ input[type="submit"]::placeholder {
     .modal-content {
         width: 80%;
     }
+
+
+    /* --- products page --- */
+
+    
+#products-grid > .section-caroussel {
+    grid-template-columns: 1fr;
+    width: 100%;
+}
 
 }
