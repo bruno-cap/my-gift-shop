@@ -2,6 +2,24 @@
 
     <h2>{{title}}</h2>
 
+
+        <div id="products-filter-by">
+            <a href="#" id="productsFilterByLink">Categories</a>
+
+            <ul class="products-filter-by-menu" id="products-filter-by-items">
+                <div id="filter-by-to-show-or-hide">
+                    <li><a href="#">All</a></li>
+                    {{#each categories}}
+                        <li><a href="#">{{this.category}}</a></li>
+                    {{/each}}
+                </div>
+            </ul>
+        </div>
+
+
+
+
+
     <div id="products-grid">
 
         <div id="products-menu">

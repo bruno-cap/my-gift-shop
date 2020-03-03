@@ -192,6 +192,10 @@ nav
 
 /* ------ product categories & bestsellers ------- */
 
+#products-filter-by, #filter-by-to-show-or-hide {
+    display: none;
+}
+
 a {
     color: #0e345a;
 }
@@ -613,6 +617,29 @@ input[type="submit"]::placeholder {
 
     /* --- products page --- */
 
+    #products-filter-by {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 45px;
+    }
+
+    #productsFilterByLink {
+        border: 1px solid #0e345a;
+        padding: 5px 192px;
+    }
+
+    #filter-by-to-show-or-hide {
+        margin-top: 15px;
+    }
+
+    #filter-by-to-show-or-hide li {
+        margin: 2px;
+    }
+
+    #filter-by-to-show-or-hide li:hover {
+        font-weight: bold;
+    }
+
     #products-menu {
         display: none;
     }
@@ -695,6 +722,10 @@ input[type="submit"]::placeholder {
 #products-grid > .section-caroussel {
     grid-template-columns: 1fr;
     width: 100%;
+}
+
+#productsFilterByLink {
+    padding: 5px 97px;
 }
 
 }

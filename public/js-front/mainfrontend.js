@@ -47,6 +47,17 @@ hamburgerMenu.addEventListener("click", ()=>{
     }
 });
 
+// show or hide product filter by menu
 
+let filterByMenu = document.querySelector("#productsFilterByLink");
+let filterByToShowOrHide = document.querySelector("#filter-by-to-show-or-hide");
 
+filterByMenu.addEventListener("click", ()=>{
 
+    if(filterByToShowOrHide.style.display === 'block') {
+        filterByToShowOrHide.style.display = 'none';
+    }
+    else {
+        filterByToShowOrHide.style.display = 'block';
+    }
+});
