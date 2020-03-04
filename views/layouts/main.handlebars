@@ -133,7 +133,7 @@
                 {{/each}}
 
             <label for="loginpassword"><p>Password</p></label>
-            <input type="text" id="loginpassword" name="loginpassword" value="{{this.loginInputPassword}}"><br>
+            <input type="password" id="loginpassword" name="loginpassword" value="{{this.loginInputPassword}}"><br>
                 {{#each errorsLoginPassword}}
                     <div class="errors"><p>{{this}}</p></div>
                 {{/each}}
@@ -182,13 +182,13 @@
                 {{/each}}
 
           <label for="signuppassword"><p>Password</p></label>
-          <input type="text" id="signuppassword" name="signuppassword" value="{{this.signupInputPassword}}">
+          <input type="password" id="signuppassword" name="signuppassword" value="{{this.signupInputPassword}}">
                 {{#each errorsSignupPassword}}
                     <div class="errors"><p>{{this}}</p></div>
                 {{/each}}
 
           <label for="signuppasswordconfirmation"><p>Please re-enter password</p></label>
-          <input type="text" id="signuppasswordconfirmation" name="signuppasswordconfirmation" value="{{this.signupInputPasswordConfirmation}}">
+          <input type="password" id="signuppasswordconfirmation" name="signuppasswordconfirmation" value="{{this.signupInputPasswordConfirmation}}">
                 {{#each errorsSignupPasswordConfirmation}}
                     <div class="errors"><p>{{this}}</p></div>
                 {{/each}}

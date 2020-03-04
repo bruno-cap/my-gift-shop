@@ -101,7 +101,7 @@ span.makeBold{
     width: 100%;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
@@ -408,7 +408,7 @@ input[type="submit"]::placeholder {
     cursor: pointer;
 }
 
-.modal-content input[type=text] {
+.modal-content input[type=text], .modal-content input[type=password] {
     width: 300px;
     border: 2px;
     background:lightgray;
