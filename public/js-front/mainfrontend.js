@@ -1,6 +1,35 @@
+
+
+/* --- check if modals should be opened on page load --- */
+/*
+var test = 1;
+
+if (test == 2) {
+
+    window.onload = function() {
+        modal.style.display = "block";
+    }
+
+}
+*/
+
+/*
+var test = document.getElementById("loginErrors");
+
+if (test != null) {
+    window.onload = function() {
+        modal.style.display = "block";
+    }
+}
+*/
+
+
 /* --- modal 1 - Log in --- */
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
+
+var submitBtn = document.getElementById("loginsubmit");
+
 var span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function() {

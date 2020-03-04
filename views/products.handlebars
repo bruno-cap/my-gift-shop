@@ -2,7 +2,6 @@
 
     <h2>{{title}}</h2>
 
-
         <div id="products-filter-by">
             <a href="#" id="productsFilterByLink">Categories</a>
 
@@ -17,34 +16,31 @@
         </div>
 
 
+        <div id="products-grid">
 
+            <div id="products-menu">
+                <h3>Categories</h3>
+                <hr>
+                <p><span class="makeBold">All</span></p>
+                {{#each categories}}
+                    <a href="#"><p>{{this.category}}</p></a>
+                {{/each}}
+                <hr>
+            </div>
 
-
-    <div id="products-grid">
-
-        <div id="products-menu">
-            <h3>Categories</h3>
-            <hr>
-            <p><span class="makeBold">All</span></p>
-            {{#each categories}}
-                <a href="#"><p>{{this.category}}</p></a>
-            {{/each}}
-            <hr>
-        </div>
-
-        <div class="section-caroussel">
-            {{#each allProducts}}
-                <div class="item-in-section-caroussel">
-                    <div>
-                        <a href="#"><img src="img/{{this.image}}" alt="{{this.title}}">
-                        <p>{{this.title}}</p>
-                        <p>{{this.category}}</p>
-                        <p>$ {{this.price}}</p></a>
+            <div class="section-caroussel">
+                {{#each allProducts}}
+                    <div class="item-in-section-caroussel">
+                        <div>
+                            <a href="#"><img src="img/{{this.image}}" alt="{{this.title}}">
+                            <p>{{this.title}}</p>
+                            <p>{{this.category}}</p>
+                            <p>$ {{this.price}}</p></a>
+                        </div>
                     </div>
-                </div>
-            {{/each}}
-        </div>
+                {{/each}}
+            </div>
 
-    </div>
+        </div>
 
 </section>
