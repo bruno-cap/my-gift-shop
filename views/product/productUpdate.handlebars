@@ -1,0 +1,87 @@
+<div id="addForm">
+    <form action="/product/edit/{{_id}}?method=PUT" method="POST" enctype="multipart/form-data">
+
+    <div class="form-row justify-content-md-center px-4" style="max-width: 1200px; margin: 0 auto !important;">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-8 mt-4 mb-1">
+            <img src="/img/uploads/{{this.picture}}" class="img-fluid">
+        </div>
+
+        <div class="col-xl-9 col-lg-9 col-md-12 mt-4 mb-1">
+
+            <div class="form-row">
+                <div class="col-md-3 mb-1">
+                    <div class="form-group">
+                        <select class="form-control" id="productCategory" name="productCategory">
+                            <option value="Computers" {{#if_eq this.category "Computers"}} selected {{/if_eq}}>Computers</option>
+                            <option value="Smart Home" {{#if_eq this.category "Smart Home"}} selected {{/if_eq}}>Smart Home</option>
+                            <option value="Cameras" {{#if_eq this.category "Cameras"}} selected {{/if_eq}}>Cameras</option>
+                            <option value="Videogames" {{#if_eq this.category "Videogames"}} selected {{/if_eq}}>Videogames</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-9 mb-4">
+                    <input type="text" class="form-control" id="productName" name="productName" value="{{this.name}}">
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="col-md-4 col-sm-6 mb-3">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                        </div>
+                            <input type="text" class="form-control" id="productPrice" name="productPrice" value="{{this.price}}">               
+                    </div>
+                </div>
+                
+
+                <div class="col-md-5 col-sm-6">
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="productQuantity" name="productQuantity" value="{{this.quantity}}">
+                        <div class="input-group-append"><span class="input-group-text">units</span></div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-md-2 mb-1 mx-auto mt-2">
+                    <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="productBestseller" name="productBestseller" value="true" {{#if_eq this.isBestseller true}} checked {{/if_eq}}>
+                            <label class="custom-control-label" for="productBestseller">Bestseller</label>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="form-group mt-3 mb-4">
+            <textarea class="form-control" id="productDescription" name="productDescription" rows="3">{{this.description}}</textarea>
+        </div>
+
+
+
+        <div class="form-row">
+
+            <div class="col-md-10 mb-1">
+                <div class="form-group mb-1">
+                    <input type="file" class="form-control-file" name="productPic" id="productPic">
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-1">
+                <input type="submit" class="btn btn-primary" id="submit-signup" value="Update">
+            </div>
+
+        </div>
+
+        </div>
+        </div>
+    </form>
+</div>

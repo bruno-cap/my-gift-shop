@@ -1,0 +1,35 @@
+<div class="row bg-white rounded shadow justify-content-md-center pb-5" style="max-width: 400px; margin: 70px auto !important;">
+
+    <div class="col-12 mb-2">
+        <h2>Login</h2>
+    </div>
+
+    <div class="col-12">
+        
+        <!-- login error messages -->
+        {{#each errorsLogin}}
+            <div class="registration-errors">
+                <p>{{this}}</p>
+            </div>
+        {{/each}}
+
+        <form action="/user/authentication" method="POST">
+
+            <input type="text" class="form-control col-10 mx-auto mb-3 mt-3" id="loginuserid" name="loginuserid" placeholder="E-mail" value="{{this.loginInputId}}">
+                {{#each errorsLoginId}}
+                    <div class="errors"><p>{{this}}</p></div>
+                {{/each}}
+
+
+            <input type="password" class="form-control col-10 mx-auto mb-3" id="loginpassword" name="loginpassword" placeholder="Password" value="{{this.loginInputPassword}}">
+                {{#each errorsLoginPassword}}
+                    <div class="errors"><p>{{this}}</p></div>
+                {{/each}}
+
+            <input type="submit" class="btn btn-primary mt-3" id="loginsubmit" value="Continue">
+        </form>
+
+    </div>
+
+</div>
+

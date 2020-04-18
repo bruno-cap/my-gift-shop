@@ -1,0 +1,81 @@
+{{#if fileSubmissionError}}
+    <div class="errors"><p>{{this.fileSubmissionError}}</p></div>
+{{/if}}
+
+
+<div id="addForm">
+
+    <form action="/product/add" method="POST" enctype="multipart/form-data">
+
+
+        <div class="form-row justify-content-md-center">
+            <div class="col-12 mt-4 px-4 mb-1" style="max-width: 800px;">
+
+                <div class="form-row">
+
+                    <div class="col-md-3 col-sm-4 mb-1 mb-1">
+
+                        <div class="form-group">
+                            <select class="form-control" id="productCategory" name="productCategory">
+                                <option value="Computers">Computers</option>
+                                <option value="Smart Home">Smart Home</option>
+                                <option value="Cameras">Cameras</option>
+                                <option value="Videogames">Videogames</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-9 col-sm-8 mb-1">
+                        <input type="text" class="form-control" id="productName" name="productName" placeholder="Name"><br>
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="col-md-4 col-sm-6 mb-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                            </div>
+                                <input type="text" class="form-control" id="productPrice" name="productPrice" placeholder="Price">               
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-5 col-sm-6 mb-1">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="productQuantity" name="productQuantity" placeholder="Quantity">
+                            <div class="input-group-append"><span class="input-group-text">units</span></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 mb-1 mx-auto mt-2">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="productBestseller" name="productBestseller" value="true">
+                            <label class="custom-control-label" for="productBestseller">Bestseller</label>
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-3 mb-4">
+                    <textarea class="form-control" id="productDescription" name="productDescription" rows="3" placeholder="Description"></textarea>
+                </div>
+
+                <div class="form-group mb-4">
+                    <input type="file" class="form-control-file mx-auto" name="productPic" id="productPic">
+                </div>
+
+
+                <input type="submit" class="btn btn-primary" id="submit-signup" value="Add product">
+
+            </div>
+        </div>
+
+    </form>
+
+</div>

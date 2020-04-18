@@ -1,0 +1,47 @@
+<div class="row bg-white rounded shadow justify-content-md-center pb-5" style="max-width: 400px; margin: 70px auto !important;">
+
+    <div class="col-12 mb-2">
+        <h2>Sign Up</h2>
+    </div>
+
+    <div class="col-12">
+        <!-- signup error messages -->
+        {{#each errorsSignup}}
+            <div class="registration-errors">
+                <p>{{this}}</p>
+            </div>
+        {{/each}}
+
+        <form action="/user/registration" method="POST">
+            <input type="text" class="form-control col-10 mx-auto mb-3 mt-3" id="signupfirstname" name="signupfirstname" placeholder="First Name" value="{{this.signupInputFirstName}}">
+                {{#each errorsSignupFirstName}}
+                    <div class="errors"><p>{{this}}</p></div>
+                {{/each}}
+
+            <input type="text" class="form-control col-10 mx-auto mb-3" id="signuplastname" name="signuplastname" placeholder="Last Name" value="{{this.signupInputLastName}}">
+                {{#each errorsSignupLastName}}
+                    <div class="errors"><p>{{this}}</p></div>
+                {{/each}}
+
+            <input type="text" class="form-control col-10 mx-auto mb-3" id="signupemail" name="signupemail" placeholder="E-mail" value="{{this.signupInputEmail}}">
+                {{#each errorsSignupEmail}}
+                    <div class="errors"><p>{{this}}</p></div>
+                {{/each}}
+
+            <input type="password" class="form-control col-10 mx-auto mb-3" id="signuppassword" name="signuppassword" placeholder="Password" value="{{this.signupInputPassword}}">
+                {{#each errorsSignupPassword}}
+                    <div class="errors"><p>{{this}}</p></div>
+                {{/each}}
+
+            <input type="password" class="form-control col-10 mx-auto mb-3" id="signuppasswordconfirmation" name="signuppasswordconfirmation" placeholder="Confirm Password" value="{{this.signupInputPasswordConfirmation}}">
+                {{#each errorsSignupPasswordConfirmation}}
+                    <div class="errors"><p>{{this}}</p></div>
+                {{/each}}
+
+            <input type="submit" class="btn btn-primary mt-3" id="submit-signup" value="Create Account">
+        </form>
+
+    </div>
+
+
+</div>
