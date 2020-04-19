@@ -294,6 +294,12 @@ input[type="submit"]::placeholder {
     margin-bottom: 10px;
 }
 
+.add-errors {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 
 .btn-primary, .btn-primary:active, .btn-primary:visited {
     border-color: #3B6779;

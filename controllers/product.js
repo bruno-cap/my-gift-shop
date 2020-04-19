@@ -273,68 +273,87 @@ router.get("/add/list", isAuthenticated, isClerk, (req,res)=>{
 
 router.post("/add", isAuthenticated, isClerk, (req,res)=>{
 
-    // check if attached file is an image and reject it if it's not
-    if( req.files.productPic.mimetype != "image/jpeg" &&
-        req.files.productPic.mimetype != "image/png" &&
-        req.files.productPic.mimetype != "image/gif" &&
-        req.files.productPic.mimetype != "image/bmp") {
-
-            res.render("product/productAdd",{
-                headingInfo: `mygiftshop - add products`,
-                title: "Home Page",
-                fileSubmissionError: "Image files - only .jpg, .jpeg, .png, .gif, and .bmp are allowed."
-            });
-
-    } else {
-    // attached file is an image, proceed adding to database
-
     const {productName, productPrice, productDescription, productCategory, productQuantity, productBestseller} = req.body;
 
-    let bestsellerToProductModel;
-    if (productBestseller == null) {
-        bestsellerToProductModel = false;
-    } else {
-        bestsellerToProductModel = productBestseller;   // which is going to be true as productBestseller is either true or null
+    // the html form only sends isBestseller = true OR null.
+    // we create an indermediate variable called bestsellerToPass and assign false if true wasn't captured in POST
+    let bestsellerToPass = false;
+    if (req.body.productBestseller) {
+        bestsellerToPass = true;
     }
 
-    const newProduct = {
-        name: productName,
-        price: productPrice,
-        description: productDescription,
-        category: productCategory,
-        quantity: productQuantity,
-        isBestseller: bestsellerToProductModel,
-        createdBy: res.locals.user._id
-    }
+    // if it's null it means a new picture wasn't selected so we don't need to update that particular attribute
+    if(req.files != null) {
 
-    const product = new productModel(newProduct);
-    product.save()
-    .then((product)=>{
-        req.files.productPic.name = `admin_prod_pic_${product._id}${path.parse(req.files.productPic.name).ext}`;
-        req.files.productPic.mv(`public/img/uploads/${req.files.productPic.name}`)
+        // check if attached file is an image and reject it if it's not
+        if( 
+            req.files.productPic.mimetype != "image/jpeg" &&
+            req.files.productPic.mimetype != "image/png" &&
+            req.files.productPic.mimetype != "image/gif" &&
+            req.files.productPic.mimetype != "image/bmp") {
 
-        .then(()=>{
-            productModel.updateOne({_id:product._id},{
-                picture: req.files.productPic.name
-            })
-            .then(()=>{
-                res.render("user/clerkDashboard",{
-                    headingInfo: "mygiftshop - clerk dashboard",
-                    title: "Dashboard"
+                res.render("product/productAdd",{
+                    headingInfo: `mygiftshop - add products`,
+                    title: "Add Products",
+                    fileSubmissionError: "Image files - only .jpg, .jpeg, .png, .gif, and .bmp are allowed.",
+                    name: productName,
+                    price: productPrice,
+                    description: productDescription,
+                    category: productCategory,
+                    quantity: productQuantity,
+                    isBestseller: bestsellerToPass
                 });
+
+        } else {
+        // attached file is an image, proceed adding to database    
+
+        let bestsellerToProductModel;
+        if (productBestseller == null) {
+            bestsellerToProductModel = false;
+        } else {
+            bestsellerToProductModel = productBestseller;   // which is going to be true as productBestseller is either true or null
+        }
+
+        const newProduct = {
+            name: productName,
+            price: productPrice,
+            description: productDescription,
+            category: productCategory,
+            quantity: productQuantity,
+            isBestseller: bestsellerToProductModel,
+            createdBy: res.locals.user._id
+        }
+
+        const product = new productModel(newProduct);
+        product.save()
+        .then((product)=>{
+            req.files.productPic.name = `admin_prod_pic_${product._id}${path.parse(req.files.productPic.name).ext}`;
+            req.files.productPic.mv(`public/img/uploads/${req.files.productPic.name}`)
+
+            .then(()=>{
+                productModel.updateOne({_id:product._id},{
+                    picture: req.files.productPic.name
+                })
+                .then(()=>{
+                    res.render("user/clerkDashboard",{
+                        headingInfo: "mygiftshop - clerk dashboard",
+                        title: "Dashboard"
+                    });
+                })
+                .catch(err=>console.log(`Error ${err}`));
             })
             .catch(err=>console.log(`Error ${err}`));
         })
         .catch(err=>console.log(`Error ${err}`));
-    })
-    .catch(err=>console.log(`Error ${err}`));
+    }
 }
 
 })
 
 
 router.get("/edit/:id", isAuthenticated, isClerk, (req,res)=>{
-
+    
+    // attached file is an image, proceed adding to database
     productModel.findById(req.params.id)
     .then((product)=>{
 
@@ -345,7 +364,7 @@ router.get("/edit/:id", isAuthenticated, isClerk, (req,res)=>{
             title: "Edit Products",
             _id,
             name,
-            price: parseFloat(product.price).toFixed(2),
+            price,
             description,
             category,
             quantity,
@@ -356,6 +375,7 @@ router.get("/edit/:id", isAuthenticated, isClerk, (req,res)=>{
     })
 
     .catch(err=>console.log(`Error happened when pulling from the database: ${err}`));
+
 })
 
 
@@ -365,7 +385,7 @@ router.put("/edit/:id",(req,res)=>{
     // we create an indermediate variable called bestsellerToPass and assign false if true wasn't captured in POST
     let bestsellerToPass = false;
     if (req.body.productBestseller) {
-        bestsellerToPass = req.body.productBestseller;
+        bestsellerToPass = true;
     }
 
     const product = 
@@ -378,26 +398,40 @@ router.put("/edit/:id",(req,res)=>{
         isBestseller:bestsellerToPass
     }
 
-    // if it's null it means a new picture wasn't selected so we don't need to update that particular attribute
-    if(req.files != null) {
+    if( req.files != null &&
+        req.files.productPic.mimetype != "image/jpeg" &&
+        req.files.productPic.mimetype != "image/png" &&
+        req.files.productPic.mimetype != "image/gif" &&
+        req.files.productPic.mimetype != "image/bmp") {
 
-        req.files.productPic.name = `admin_prod_pic_${req.params.id}${path.parse(req.files.productPic.name).ext}`;
-        req.files.productPic.mv(`public/img/uploads/${req.files.productPic.name}`)
+            res.redirect(`/product/edit/${req.params.id}`);
 
-        .then(()=>{
-            productModel.updateOne({_id:product._id},{
-                picture: req.files.productPic.name
+    } else {
+
+        if( req.files != null &&
+            (req.files.productPic.mimetype == "image/jpeg" ||
+            req.files.productPic.mimetype == "image/png" ||
+            req.files.productPic.mimetype == "image/gif" ||
+            req.files.productPic.mimetype == "image/bmp")) {
+
+            req.files.productPic.name = `admin_prod_pic_${req.params.id}${path.parse(req.files.productPic.name).ext}`;
+            req.files.productPic.mv(`public/img/uploads/${req.files.productPic.name}`)
+
+            .then(()=>{
+                productModel.updateOne({_id:product._id},{
+                    picture: req.files.productPic.name
+                })
             })
-        })
-        .catch(err=>console.log(`Error uploading the picture to the database: ${err}`));
-    }
+            .catch(err=>console.log(`Error uploading the picture to the database: ${err}`));
+        }
 
-    // update the rest of the information
-    productModel.updateOne({_id:req.params.id}, product)
-    .then(()=>{
-        res.redirect("/product/add/list");
-    })
-    .catch(err=>console.log(`Error happened when updating data from the database: ${err}`));
+        // update the rest of the information
+        productModel.updateOne({_id:req.params.id}, product)
+        .then(()=>{
+            res.redirect("/product/add/list");
+        })
+        .catch(err=>console.log(`Error happened when updating data from the database: ${err}`));
+    }
 })
 
 
