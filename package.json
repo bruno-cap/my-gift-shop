@@ -5,6 +5,8 @@
   "dependencies": {
     "@sendgrid/mail": "^6.5.5",
     "bcryptjs": "^2.4.3",
+    "bl": "^4.0.3",
+    "connect": "^3.7.0",
     "connect-mongo": "^3.2.0",
     "connect-mongodb-session": "^2.4.1",
     "dotenv": "^8.2.0",
@@ -15,6 +17,7 @@
     "express-session": "^1.17.1",
     "express-sessions": "^1.0.6",
     "handlebars": "^4.7.6",
+    "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "mongoose": "^5.11.14"
   },
