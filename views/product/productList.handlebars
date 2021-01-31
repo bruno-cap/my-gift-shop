@@ -1,43 +1,38 @@
 <section>
-
     <h2>{{title}}</h2>
-
     <!-- search bar -->
-    <form method="POST" action="/product/search">
+    <form method="POST" action="/product/category/search">
         <div class="row justify-content-md-center" style="width: 300px; margin: 0 auto !important;">
-
             <div class="col-10 mx-0 px-0 mb-5">
                 <select class="form-control" name="categorySearch">
-                        <option value="All" {{#if_eq this.title "All"}} selected {{/if_eq}}>All products</option>
-                        <option value="Computers" {{#if_eq this.title "Computers"}} selected {{/if_eq}}>Computers</option>
-                        <option value="Smart Home" {{#if_eq this.title "Smart Home"}} selected {{/if_eq}}>Smart Home</option>
-                        <option value="Cameras" {{#if_eq this.title "Cameras"}} selected {{/if_eq}}>Cameras</option>
-                        <option value="Videogames" {{#if_eq this.title "Videogames"}} selected {{/if_eq}}>Videogames</option>
+                    <option value="All" {{#if_eq this.title "All" }} selected {{/if_eq}}>All products</option>
+                    <option value="Computers" {{#if_eq this.title "Computers" }} selected {{/if_eq}}>Computers</option>
+                    <option value="Smart Home" {{#if_eq this.title "Smart Home" }} selected {{/if_eq}}>Smart Home
+                    </option>
+                    <option value="Cameras" {{#if_eq this.title "Cameras" }} selected {{/if_eq}}>Cameras</option>
+                    <option value="Videogames" {{#if_eq this.title "Videogames" }} selected {{/if_eq}}>Videogames
+                    </option>
                 </select>
             </div>
-
-
             <div class="col-1 pl-0 mb-5 text-left ml-2">
                 <input type="submit" class="btn btn-primary" value="Search">
             </div>
         </div>
     </form>
-
-
     <!-- products -->
     <div class="products-carousel">
         <div class="row" style="max-width: 750px; margin: 0 auto !important;">
             {{#each productData}}
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-5">
-                    <div class="carousel-cell">
-                        <a href="/product/{{this._id}}"><img src="/img/uploads/{{this.picture}}" alt="{{this.name}}">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-5">
+                <div class="carousel-cell">
+                    <a href="/product/{{this._id}}"><img src="/img/uploads/{{this.picture}}" alt="{{this.name}}">
                         <p>{{this.name}}</p>
                         <p>{{this.category}}</p>
-                        <p>$ {{this.price}}</p></a>
-                    </div>
+                        <p>$ {{this.price}}</p>
+                    </a>
                 </div>
+            </div>
             {{/each}}
         </div>
     </div>
-
 </section>

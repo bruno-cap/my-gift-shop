@@ -1,66 +1,52 @@
 // product schema
-
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
- 
-    name:
-    {
-        type: String,
-        required:true
-    },
+  name: {
+    type: String,
+    required: true,
+  },
 
-    price:
-    {
-        type: Number,
-        required:true
-    },
-    
-    description:
-    {
-        type: String,
-        required:true
-    },
+  price: {
+    type: Number,
+    required: true,
+  },
 
-    category:
-    {
-        type: String,
-        required:true
-    },
+  description: {
+    type: String,
+    required: true,
+  },
 
-    quantity:
-    {
-        type: Number,
-        required:true
-    },
+  category: {
+    type: String,
+    required: true,
+  },
 
-    isBestseller:
-    {
-        type: Boolean,
-        required: true
-    },
+  quantity: {
+    type: Number,
+    required: true,
+  },
 
-    picture:
-    {
-        type: String
-    },
+  isBestseller: {
+    type: Boolean,
+    required: true,
+  },
 
-    dateCreated:
-    {
-        type:Date,
-        default:Date.now()
-    },
+  picture: {
+    type: String,
+  },
 
-    createdBy:
-    {
-        type: String,
-        required: true
-    }
+  dateCreated: {
+    type: Date,
+    default: Date.now(),
+  },
 
+  createdBy: {
+    type: String,
+    required: true,
+  },
 });
 
-
-const productModel = mongoose.model('Product', productSchema); // the name specified here gets converted to lowercase plural
-
+const productModel = mongoose.model("Product", productSchema); // the name specified here gets converted to lowercase plural
 module.exports = productModel;

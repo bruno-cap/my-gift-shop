@@ -1,68 +1,56 @@
 <div class="row mt-5 justify-content-sm-center" style="max-width: 1400px !important; margin: 30px auto !important;">
-
     <!-- product image -->
     <div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-10 mb-4 mx-0 px-0 mx-auto mb-4">
         <img src="/img/uploads/{{this.picture}}" class="img-fluid">
     </div>
-
     <!-- product info -->
     <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10 col-10 mb-1 text-left mx-auto">
         <h2 style="text-align: left; margin: 0 auto;">{{this.name}}</h2>
         <p>$ {{this.price}}</p>
         <br>
-
         <p>{{this.description}}</p>
     </div>
-
     <!-- add to cart info -->
     <div class="col-xl-2 col-lg-6 col-md-6 col-sm-8 mb-1 mx-0">
-
         {{#each productInShoppingCart}}
-            <div class="registration-errors">
-                <p>{{this}}</p>
-            </div>
+        <div class="registration-errors">
+            <p>{{this}}</p>
+        </div>
         {{/each}}
-        
         {{#if_eq this.quantity 0}}
-            <p>Out of stock!</p>
+        <p>Out of stock!</p>
         {{else}}
-            {{#if_lower this.quantity 10}}
-                <p>Only {{this.quantity}} units in stock.<br>
-                Hurry up!</p>
-            {{else}}
-                <p>In stock.</p>
-            {{/if_lower}}
+        {{#if_lower this.quantity 10}}
+        <p>Only {{this.quantity}} units in stock.<br>
+            Hurry up!</p>
+        {{else}}
+        <p>In stock.</p>
+        {{/if_lower}}
         {{/if_eq}}
-
-
         <!-- error in case user adds to cart without an active session -->
         {{#each errors}}
-            <div class="registration-errors">
-                <p>{{this}}</p>
-            </div>
+        <div class="registration-errors">
+            <p>{{this}}</p>
+        </div>
         {{/each}}
-
         <form method="POST" action="/product/addToCart/{{this._id}}">
-
             <div class="row">
-
-            {{#if_eq this.quantity 0}}
-            {{else}}
-                    <div class="col-md-12 px-0 mb-1 text-center">
-                        <select class="form-control col-10 px-0" id="selectedQuantityToAdd" name="selectedQuantityToAdd" style="margin: 0 auto;">
-                            {{#each quantityToAdd}}
-                                <option value="{{this}}">{{this}}</option>
-                            {{/each}}
-                        </select>
-                    </div>
-            {{/if_eq}}
-
-                    <div class="col-md-12 px-0 mb-1 text-center align-middle">
-                        <input type="submit" class="btn btn-primary col-10" value="Add to cart" {{#if_eq this.quantity 0}}disabled{{/if_eq}}>
-                    </div>
+                {{#if_eq this.quantity 0}}
+                {{else}}
+                <div class="col-md-12 px-0 mb-1 text-center">
+                    <select class="form-control col-10 px-0" id="selectedQuantityToAdd" name="selectedQuantityToAdd"
+                        style="margin: 0 auto;">
+                        {{#each quantityToAdd}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
                 </div>
+                {{/if_eq}}
+                <div class="col-md-12 px-0 mb-1 text-center align-middle">
+                    <input type="submit" class="btn btn-primary col-10" value="Add to cart" {{#if_eq this.quantity
+                        0}}disabled{{/if_eq}}>
+                </div>
+            </div>
         </form>
-
     </div>
-
 </div>

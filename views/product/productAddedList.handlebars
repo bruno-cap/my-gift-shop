@@ -1,38 +1,61 @@
-<br>
+<br />
 {{#each data}}
-
-<div id="addedProducts">
-    
-    <div class="row mt-5 justify-content-sm-center" style="max-width: 1400px !important; margin: 30px auto !important;">
-
-        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-10 mb-4 mx-0 px-0 mx-auto mb-4">
-            <img src="/img/uploads/{{this.picture}}" class="img-fluid">
-        </div>
-
-        <div class="col-xl-6 col-lg-7 col-md-10 col-sm-10 col-10 mb-1 text-left mx-auto">
-
-            <p>{{this.name}} - {{this.category}}</p>
-            <p>{{this.quantity}} units - ${{this.price}} unit {{#if_eq this.isBestseller 1}} - Bestseller {{/if_eq}}</p>
-            <p>{{this.description}}</p>
-            <p>Added on {{this.dateCreated}}</p>
-            
-        </div>
-
-        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-8 mb-1 mx-0">
-            <a href="/product/edit/{{this._id}}"><button type="button" class="btn btn-primary mt-2" style="width: 100px;">Update</button></a>
-            <a href="/product/delete/{{this._id}}"><button type="button" class="btn btn-primary mt-2" style="width: 100px;">Delete</button></a>
-        </div>
-
+  <div id="addedProducts">
+    <div
+      class="row mt-5 justify-content-sm-center"
+      style="max-width: 1400px !important; margin: 30px auto !important;"
+    >
+      <div
+        class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-10 mb-4 mx-0 px-0 mx-auto mb-4"
+      >
+        <img src="/img/uploads/{{this.picture}}" class="img-fluid" />
+      </div>
+      <div
+        class="col-xl-6 col-lg-7 col-md-10 col-sm-10 col-10 mb-1 text-left mx-auto"
+      >
+        <p>
+          {{this.name}}
+          -
+          {{this.category}}
+        </p>
+        <p>
+          {{this.quantity}}
+          units - $
+          {{this.price}}
+          unit
+          {{#if_eq this.isBestseller 1}}
+            - Bestseller
+          {{/if_eq}}
+        </p>
+        <p>
+          {{this.description}}
+        </p>
+        <p>
+          Added on
+          {{this.dateCreated}}
+        </p>
+      </div>
+      <div class="col-xl-2 col-lg-6 col-md-6 col-sm-8 mb-1 mx-0">
+        <a href="/product/edit/{{this._id}}">
+          <button
+            type="button"
+            class="btn btn-primary mt-2"
+            style="width: 100px;"
+          >
+            Update
+          </button>
+        </a>
+        <a href="/product/delete/{{this._id}}">
+          <button
+            type="button"
+            class="btn btn-primary mt-2"
+            style="width: 100px;"
+          >
+            Delete
+          </button>
+        </a>
+      </div>
     </div>
-
-</div>
-
-
-<hr>
-
-
-
-
-
-
+  </div>
+  <hr />
 {{/each}}

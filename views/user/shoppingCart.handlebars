@@ -2,172 +2,169 @@
 
 {{#if user}}
 
-    {{#if shoppingCartData}}
+{{#if shoppingCartData}}
 
-        <div class="row bg-white rounded shadow-sm justify-content-md-center pb-3 mb-5" style="max-width: 80%; margin: 0 auto !important;">
-            
-            <!-- table to be shown in xl and lg screen sizes -->
-            <div class="table-responsive d-none d-lg-block">
-                <table class="table px-0 mx-auto">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="border-0 bg-light" style="max-width: 40px !important;">
-                                <div class="py-2 text-uppercase">Product</div>
-                            </th>
+<div class="row bg-white rounded shadow-sm justify-content-md-center pb-3 mb-5"
+    style="max-width: 80%; margin: 0 auto !important;">
 
-                            <th scope="col" class="border-0 bg-light">
-                                <div class="py-2 text-uppercase">Price</div>
-                            </th>
+    <!-- table to be shown in xl and lg screen sizes -->
+    <div class="table-responsive d-none d-lg-block">
+        <table class="table px-0 mx-auto">
+            <thead>
+                <tr>
+                    <th scope="col" class="border-0 bg-light" style="max-width: 40px !important;">
+                        <div class="py-2 text-uppercase">Product</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                        <div class="py-2 text-uppercase">Price</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                        <div class="py-2 text-uppercase">Quantity</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                        <div class="py-2 text-uppercase">Remove</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                        <div class="py-2 text-uppercase">Total</div>
+                    </th>
+                </tr>
+            </thead>
 
-                            <th scope="col" class="border-0 bg-light">
-                                <div class="py-2 text-uppercase">Quantity</div>
-                            </th>
-
-                            <th scope="col" class="border-0 bg-light">
-                                <div class="py-2 text-uppercase">Remove</div>
-                            </th>
-                    
-                            <th scope="col" class="border-0 bg-light">
-                                <div class="py-2 text-uppercase">Total</div>
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        {{#each shoppingCartData}}
-                            <tr>
-                                <th scope="row" class="border-0" style="max-width: 150px;">
-                                    <div class="p-2">
-                                        <a href="/product/{{this._id}}"><img src="/img/uploads/{{this.picture}}" alt="" width="70" class="img-fluid rounded shadow-sm"></a>
-                                        <div class="ml-3 d-inline-block align-middle">
-                                            <h5 class="mb-0"> <a href="/product/{{this._id}}" class="text-dark d-inline-block align-middle">{{this.name}}</a></h5><a href="/product/category/{{this.category}}"><span class="text-muted font-weight-normal font-italic d-block">{{this.category}}</span></a>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="border-0 align-middle"><strong>${{this.price}}</strong></td>
-                                <td class="border-0 align-middle">
-                                    <form method="POST" action="/user/shoppingCart/update/{{this._id}}?method=PUT">
-
-                                        <div class="row justify-content-md-center">
-
-                                            <div class="col-xl-4 col-lg-5 col-md-8 px-0 mx-0 mb-1">
-                                                <select class="form-control" id="updateToSelectedQuantity" name="updateToSelectedQuantity">
-                                                    {{#each quantityToAdd}}
-                                                        <option value="{{this}}" {{#if_eq this ../this.quantityInCart}} selected {{/if_eq}}>{{this}}</option>
-                                                    {{/each}}
-                                                </select>
-                                            </div>
-
-                                            <div class="col-xl-1 col-lg-1 col-md-12 pl-0 mb-1 ml-2">
-                                                <input type="submit" class="btn btn-primary" value="Update">
-                                            </div>
-
-                                        </div>                    
-
-                                    </form>
-
-                                </td>
-                                <td class="border-0 align-middle"><a href="/user/shoppingCart/delete/{{this._id}}" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                                <td class="border-0 align-middle"><strong>${{this.pricePerCartQuantity}}</strong></td>
-                            </tr>
-
-                        {{/each}}
-
-                    </tbody>
-                </table>
-            </div>
-            <!-- end of table to be shown in xl and lg screen sizes -->
-
-
-            <!-- table to be shown in md, sm, and xs screen sizes -->
-            <div class="d-lg-none col-md-10 mt-4">
-                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Shopping Cart</div>
-                <div class="p-4">
-                    <ul class="list-unstyled mb-4">
-                        {{#each shoppingCartData}}
-
-                            <div class="p-2">
-                                <a href="/product/{{this._id}}"><img src="/img/uploads/{{this.picture}}" alt="" width="200" class="img-fluid rounded shadow-sm"></a>
-                                <div class="ml-3 d-inline-block align-middle">
-                                    <h5 class="mb-0"> <a href="/product/{{this._id}}" class="text-dark d-inline-block align-middle">{{this.name}}</a></h5><a href="/product/category/{{this.category}}"><span class="text-muted font-weight-normal font-italic d-block">{{this.category}}</span></a>
+            <tbody>
+                {{#each shoppingCartData}}
+                <tr>
+                    <th scope="row" class="border-0" style="max-width: 150px;">
+                        <div class="p-2">
+                            <a href="/product/{{this._id}}"><img src="/img/uploads/{{this.picture}}" alt="" width="70"
+                                    class="img-fluid rounded shadow-sm"></a>
+                            <div class="ml-3 d-inline-block align-middle">
+                                <h5 class="mb-0"> <a href="/product/{{this._id}}"
+                                        class="text-dark d-inline-block align-middle">{{this.name}}</a></h5><a
+                                    href="/product/category/{{this.category}}"><span
+                                        class="text-muted font-weight-normal font-italic d-block">{{this.category}}</span></a>
+                            </div>
+                        </div>
+                    </th>
+                    <td class="border-0 align-middle"><strong>${{this.price}}</strong></td>
+                    <td class="border-0 align-middle">
+                        <form method="POST" action="/user/shoppingCart/update/{{this._id}}?method=PUT">
+                            <div class="row justify-content-md-center">
+                                <div class="col-xl-4 col-lg-5 col-md-8 px-0 mx-0 mb-1">
+                                    <select class="form-control" id="updateToSelectedQuantity"
+                                        name="updateToSelectedQuantity">
+                                        {{#each quantityToAdd}}
+                                        <option value="{{this}}" {{#if_eq this ../this.quantityInCart}} selected
+                                            {{/if_eq}}>{{this}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="col-xl-1 col-lg-1 col-md-12 pl-0 mb-1 ml-2">
+                                    <input type="submit" class="btn btn-primary" value="Update">
                                 </div>
                             </div>
+                        </form>
+                    </td>
+                    <td class="border-0 align-middle"><a href="/user/shoppingCart/delete/{{this._id}}"
+                            class="text-dark"><i class="fa fa-trash"></i></a></td>
+                    <td class="border-0 align-middle"><strong>${{this.pricePerCartQuantity}}</strong></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <!-- end of table to be shown in xl and lg screen sizes -->
 
-                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Price </strong><strong>${{this.price}}</strong></li>
-
-                            <li class="d-flex justify-content-between py-3 border-bottom">
-                                <strong class="text-muted">
-                                    <form method="POST" action="/user/shoppingCart/update/{{this._id}}?method=PUT">
-                                        <div class="row justify-content-sm-left">
-
-                                            <div class="col-sm-6 col-6 px-0 mb-1">
-                                                <select class="form-control" id="updateToSelectedQuantity" name="updateToSelectedQuantity">
-                                                    {{#each quantityToAdd}}
-                                                        <option value="{{this}}" {{#if_eq this ../this.quantityInCart}} selected {{/if_eq}}>{{this}}</option>
-                                                    {{/each}}
-                                                </select>
-                                            </div>
-
-                                            <div class="col-sm-3 col-3 pl-0 mb-1 ml-2">
-                                                <input type="submit" class="btn btn-primary" value="Update">
-                                            </div>
-
-                                        </div>
-                                    </form>
-                                </strong>
-                                <strong><a href="/user/shoppingCart/delete/{{this._id}}" class="text-dark"><i class="fa fa-trash"></i></a></strong></li>
-
-                            <li class="d-flex justify-content-between py-3 border-bottom mb-5"><strong class="text-muted">Total</strong><strong>${{this.pricePerCartQuantity}}</strong></li>
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-            <!-- end of table to be shown in md, sm, and xs screen sizes -->
-
-
-                <div class="col-md-10 mt-4" style="max-width: 800px !important;">
-                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
-                    <div class="p-4">
-                        <ul class="list-unstyled mb-4">
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>${{orderSubtotal}}</strong></li>
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and Handling</strong><strong>${{shipping}}</strong></li>
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax - 13%</strong><strong>${{taxAmount}}</strong></li>
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                            <h5 class="font-weight-bold">${{orderTotal}}</h5>
-                        </li>
-                        </ul><a href="/user/placeOrder" class="btn btn-dark rounded-pill py-2 btn-block">Place your order</a>
+    <!-- table to be shown in md, sm, and xs screen sizes -->
+    <div class="d-lg-none col-md-10 mt-4">
+        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Shopping Cart</div>
+        <div class="p-4">
+            <ul class="list-unstyled mb-4">
+                {{#each shoppingCartData}}
+                <div class="p-2">
+                    <a href="/product/{{this._id}}"><img src="/img/uploads/{{this.picture}}" alt="" width="200"
+                            class="img-fluid rounded shadow-sm"></a>
+                    <div class="ml-3 d-inline-block align-middle">
+                        <h5 class="mb-0"> <a href="/product/{{this._id}}"
+                                class="text-dark d-inline-block align-middle">{{this.name}}</a></h5><a
+                            href="/product/category/{{this.category}}"><span
+                                class="text-muted font-weight-normal font-italic d-block">{{this.category}}</span></a>
                     </div>
                 </div>
-            </div>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Price
+                    </strong><strong>${{this.price}}</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                    <strong class="text-muted">
+                        <form method="POST" action="/user/shoppingCart/update/{{this._id}}?method=PUT">
+                            <div class="row justify-content-sm-left">
+                                <div class="col-sm-6 col-6 px-0 mb-1">
+                                    <select class="form-control" id="updateToSelectedQuantity"
+                                        name="updateToSelectedQuantity">
+                                        {{#each quantityToAdd}}
+                                        <option value="{{this}}" {{#if_eq this ../this.quantityInCart}} selected
+                                            {{/if_eq}}>{{this}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="col-sm-3 col-3 pl-0 mb-1 ml-2">
+                                    <input type="submit" class="btn btn-primary" value="Update">
+                                </div>
+                            </div>
+                        </form>
+                    </strong>
+                    <strong><a href="/user/shoppingCart/delete/{{this._id}}" class="text-dark"><i
+                                class="fa fa-trash"></i></a></strong>
+                </li>
+                <li class="d-flex justify-content-between py-3 border-bottom mb-5"><strong
+                        class="text-muted">Total</strong><strong>${{this.pricePerCartQuantity}}</strong></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <!-- end of table to be shown in md, sm, and xs screen sizes -->
 
-
-
-
-    {{else}}
-         <p>Your shopping cart is empty!</p>
-    {{/if}}
+    <div class="col-md-10 mt-4" style="max-width: 800px !important;">
+        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+        <div class="p-4">
+            <ul class="list-unstyled mb-4">
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal
+                    </strong><strong>${{orderSubtotal}}</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and
+                        Handling</strong><strong>${{shipping}}</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax -
+                        13%</strong><strong>${{taxAmount}}</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                    <h5 class="font-weight-bold">${{orderTotal}}</h5>
+                </li>
+            </ul><a href="/user/placeOrder" class="btn btn-dark rounded-pill py-2 btn-block">Place your order</a>
+        </div>
+    </div>
+</div>
 
 {{else}}
-    <p>Please <a href="/user/signup"><span class="blackLinks">Sign Up</span></a> or <a href="/user/login"><span class="blackLinks">Login</span></a> to your account</p>
+<p>Your shopping cart is empty!</p>
 {{/if}}
 
+{{else}}
+<p>Please <a href="/user/signup"><span class="blackLinks">Sign Up</span></a> or <a href="/user/login"><span
+            class="blackLinks">Login</span></a> to your account</p>
+{{/if}}
 
+<!-- best sellers -->
+{{#if shoppingCartData}}
+<h2>Other products you might like</h2>
+{{else}}
+<h2>Check out some of our products</h2>
+{{/if}}
 
-        <!-- best sellers -->
-        {{#if shoppingCartData}}
-            <h2>Other products you might like</h2>
-        {{else}}
-            <h2>Check out some of our products</h2>
-        {{/if}}
-
-        <div class="carousel" id="bestsellers-carousel" data-flickity='{ "cellAlign": "left" , "wrapAround": "true", "groundCells" : "true" }'>
-            {{#each bestsellersData}}
-                <div class="flickity-carousel-cell">
-                    <a href="/product/{{this._id}}"><img src="/img/uploads/{{this.picture}}" alt="{{this.name}}">
-                    <p>{{this.name}}</p>
-                    <p>{{this.category}}</p>
-                    <p>$ {{this.price}}</p></a>
-                </div>
-            {{/each}}
-        </div>
+<div class="carousel" id="bestsellers-carousel"
+    data-flickity='{ "cellAlign": "left" , "wrapAround": "true", "groundCells" : "true" }'>
+    {{#each bestsellersData}}
+    <div class="flickity-carousel-cell">
+        <a href="/product/{{this._id}}"><img src="/img/uploads/{{this.picture}}" alt="{{this.name}}">
+            <p>{{this.name}}</p>
+            <p>{{this.category}}</p>
+            <p>$ {{this.price}}</p>
+        </a>
+    </div>
+    {{/each}}
+</div>
