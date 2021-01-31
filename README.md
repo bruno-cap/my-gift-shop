@@ -1,6 +1,6 @@
 ﻿## My Gift Shop – An e-commerce app concept
 
-Check it out live at [https://web322-ecommerce-assignment.herokuapp.com/](https://web322-ecommerce-assignment.herokuapp.com/) :)
+Check it out live at [https://my-gift-shop.herokuapp.com/](https://my-gift-shop.herokuapp.com/) :)
 
 ### `Technologies used`
 
@@ -10,8 +10,8 @@ CSS3 + Bootstrap
 
 JavaScript
 
-Handlebars.js
+NodeJS + Express
 
-NodeJS
+Handlebars.js
 
 MongoDB via Mongoose
